@@ -72,9 +72,7 @@ No frameworks were used — fully handcrafted.
 If you'd like to collaborate or work together:
 
 📧 Email: arevalopatricio79@gmail.com  
-💼 LinkedIn: https://linkedin.com/in/patricio-martin-arévalo-ortiz-985106191  
-🐙 GitHub: https://github.com/MrToraso  
-📱 WhatsApp: https://wa.me/5493812177697  
+💼 LinkedIn: https://linkedin.com/in/patricio-martin-arévalo-ortiz-985106191   
 
 ---
 
