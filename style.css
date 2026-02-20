@@ -14,39 +14,6 @@ body {
   padding: 20px;
 }
 
-/* CRT EFFECTS */
-.crt {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center,
-    rgba(0,255,153,0.05),
-    rgba(0,0,0,0.9));
-  z-index: 998;
-}
-
-.scanlines {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.025),
-    rgba(255,255,255,0.025) 1px,
-    transparent 2px,
-    transparent 5px
-  );
-  z-index: 1;
-}
-
-.flicker {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  animation: flicker 0.15s infinite;
-  background: rgba(255,255,255,0.02);
-  z-index: 1000;
-}
 
 /* NAVBAR */
 .navbar {
@@ -307,11 +274,14 @@ body {
 
   opacity: 0;
   transition: 0.4s ease;
+
+  pointer-events: none;
 }
 
 /* Mostrar overlay */
 .project-card:hover .project-overlay {
   opacity: 1;
+  pointer-events: auto;
 }
 
 /* Zoom imagen */
@@ -534,12 +504,6 @@ footer {
   100% { transform: translate(0); }
 }
 
-@keyframes flicker {
-  0% { opacity: 0.2; }
-  50% { opacity: 0.4; }
-  100% { opacity: 0.2; }
-}
-
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
@@ -705,4 +669,47 @@ html {
 .window,
 .contact-section {
   scroll-margin-top: 80px;
+}
+
+/* ========================= */
+/* CRT EFFECT - STABLE VERSION */
+/* ========================= */
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Glow + Vignette */
+body::before {
+  background: radial-gradient(
+    circle at center,
+    rgba(0,255,153,0.06),
+    rgba(0,0,0,0.9)
+  );
+  z-index: 0;
+}
+
+/* Scanlines + Flicker */
+body::after {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 1px,
+      transparent 2px,
+      transparent 5px
+    ),
+    rgba(255,255,255,0.02);
+  animation: flicker 0.15s infinite;
+  z-index: 0;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.95; }
+  50% { opacity: 1; }
+  100% { opacity: 0.97; }
 }
